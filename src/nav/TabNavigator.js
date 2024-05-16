@@ -1,6 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Profile from "../screens/Profile";
 import Quiz from "../screens/Quiz";
-// import CustomTabBar from "../components/CustomTabBar";
+import CustomTabBar from "./CustomTabBar";
+import DataNavigator from "./DataNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -8,7 +10,7 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Quiz"
-      // tabBar={(props) => <CustomTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         tabBarHideOnKeyboard: true,
       }}
@@ -19,13 +21,13 @@ const TabNavigator = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Data"
-        component={Quiz}
+        name="DataStack"
+        component={DataNavigator}
         options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Profile"
-        component={Quiz}
+        component={Profile}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>

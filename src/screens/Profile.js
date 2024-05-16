@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Layout from "../layout/Layout";
-import CustomButton from "../UI/CustomButton";
 
-const Quiz = ({ navigation }) => {
+const Profile = ({ navigation }) => {
   return (
     <View
       style={{
@@ -37,7 +36,7 @@ const Quiz = ({ navigation }) => {
             marginLeft: 5,
           }}
         >
-          Квиз
+          Профиль
         </Text>
 
         <View
@@ -62,20 +61,19 @@ const Quiz = ({ navigation }) => {
           gap: 17,
         }}
       >
-        <CustomButton
-          label="Начать квиз"
-          color="rgba(50, 65, 36, 1)"
-          // onClick={() => navigation.navigate("AuthAuth")}
-          border={0}
-        />
-        <CustomButton
-          border={0}
-          color="rgba(50, 65, 36, 1)"
-          label="Просмотреть результаты"
-        />
+        <Text
+          style={{
+            fontSize: 30,
+            fontFamily: "Inter-Medium",
+            color: "rgba(209, 195, 146, 1)",
+            textAlign: "center",
+          }}
+        >
+          Профиля на дизайне нет
+        </Text>
       </View>
     </View>
   );
 };
 
-export default Quiz;
+export default Profile;
