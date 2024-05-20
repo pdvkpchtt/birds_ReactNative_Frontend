@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import Layout from "../layout/Layout";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import CustomButton from "../UI/CustomButton";
 
 const Quiz = ({ navigation }) => {
@@ -58,20 +59,32 @@ const Quiz = ({ navigation }) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: "#241E0D",
           paddingHorizontal: 3,
-          gap: 17,
         }}
       >
+        <Image
+          source={require("../../assets/bg2.png")}
+          style={{
+            position: "absolute",
+            top: 0,
+          }}
+        />
         <CustomButton
           label="Начать квиз"
           color="rgba(50, 65, 36, 1)"
+          otherStyle={{ position: "absolute", bottom: 28 }}
           // onClick={() => navigation.navigate("AuthAuth")}
-          border={0}
+          // border={0}
         />
-        <CustomButton
-          border={0}
-          color="rgba(50, 65, 36, 1)"
-          label="Просмотреть результаты"
+        <View
+          style={{
+            position: "absolute",
+            width: "100%",
+            bottom: 0,
+            borderBottomWidth: 1,
+            borderColor: "#9F8546",
+          }}
         />
       </View>
     </View>

@@ -1,8 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Favorites from "../screens/Favorites";
 import Profile from "../screens/Profile";
 import Quiz from "../screens/Quiz";
 import CustomTabBar from "./CustomTabBar";
 import DataNavigator from "./DataNavigator";
+import ProfileNavigator from "./ProfileNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,8 +28,8 @@ const TabNavigator = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileStack"
+        component={ProfileNavigator}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>

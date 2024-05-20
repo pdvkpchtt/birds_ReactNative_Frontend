@@ -79,7 +79,7 @@ const CustomTabBar = ({
               </Text>
             </>
           )}
-          {route.name === "Profile" && (
+          {route.name === "ProfileStack" && (
             <>
               <ProfileIcon
                 stroke={

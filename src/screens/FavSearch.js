@@ -9,8 +9,8 @@ import {
   View,
 } from "react-native";
 import SearchIcon from "../UI/icons/SearchIcon";
-import { bird } from "../client_data/birds";
 import BirdItem from "../UI/BirdItem";
+import { shallowEqual, useSelector } from "react-redux";
 
 const regs = [
   "Синицевые",
@@ -22,10 +22,13 @@ const regs = [
   "Кукушковые",
 ];
 
-const Data = ({ navigation }) => {
+const FavSearch = ({ navigation }) => {
   const { width } = useWindowDimensions();
-
-  const [state, setstate] = useState(bird);
+  const [birdsFav] = useSelector(
+    (state) => [state.favorite.birdsFav],
+    shallowEqual
+  );
+  const [state, setstate] = useState(birdsFav);
   const [input, setinput] = useState("");
   const [filt, setfilt] = useState("");
 
@@ -70,7 +73,7 @@ const Data = ({ navigation }) => {
           onChange={(val) => {
             setinput(val.nativeEvent.text);
             setstate(
-              bird.filter(
+              birdsFav.filter(
                 (i) =>
                   i.name
                     .toLowerCase()
@@ -159,12 +162,12 @@ const Data = ({ navigation }) => {
                   if (filt === item) {
                     setfilt("");
                     setinput("");
-                    setstate(bird);
+                    setstate(birdsFav);
                   } else {
                     setfilt(item);
                     setinput("");
                     setstate(
-                      bird.filter(
+                      birdsFav.filter(
                         (i) =>
                           i.name.toLowerCase().includes("") &&
                           i.type.includes(item)
@@ -214,7 +217,7 @@ const Data = ({ navigation }) => {
               <BirdItem
                 item={item}
                 width={width}
-                onClick={() => navigation.navigate("Item", { id: item.id })}
+                onClick={() => navigation.navigate("Item1", { id: item.id })}
               />
             )}
             contentContainerStyle={{
@@ -243,4 +246,4 @@ const Data = ({ navigation }) => {
   );
 };
 
-export default Data;
+export default FavSearch;

@@ -2,6 +2,7 @@ import React from "react";
 import {
   Image,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   useWindowDimensions,
@@ -12,6 +13,8 @@ import { bird } from "../client_data/birds";
 import PlayIcon from "../UI/icons/PlayIcon";
 import LikeIcon from "../UI/icons/LikeIcon";
 import BookIcon from "../UI/icons/BookIcon";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { favoriteSlice } from "../store/favoriteSlice";
 
 const ItemScreen = ({ route, navigation }) => {
   const { id } = route.params;
@@ -19,6 +22,13 @@ const ItemScreen = ({ route, navigation }) => {
   const { width } = useWindowDimensions();
 
   const item = bird.find((i) => i.id === id);
+  const [birdsFav] = useSelector(
+    (state) => [state.favorite.birdsFav],
+    shallowEqual
+  );
+  console.log(birdsFav);
+
+  const dispatch = useDispatch();
 
   return (
     <View
@@ -80,7 +90,15 @@ const ItemScreen = ({ route, navigation }) => {
           justifyContent: "space-between",
         }}
       >
-        <View style={{ padding: 5, width: width - 36 }}>
+        <ScrollView
+          style={{
+            paddingTop: 5,
+            paddingHorizontal: 5,
+            width: width - 36,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <Text
             style={{
               fontSize: 15,
@@ -88,9 +106,90 @@ const ItemScreen = ({ route, navigation }) => {
               color: "rgba(209, 195, 146, 1)",
             }}
           >
-            {item.desc}
+            {"\t\t\t " + item.desc2}
           </Text>
-        </View>
+          <Text
+            style={{
+              fontSize: 16,
+              fontFamily: "Inter-Medium",
+              color: "#D1C392",
+              marginTop: 12,
+              marginBottom: 4,
+            }}
+          >
+            {"\tОписание"}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              fontFamily: "Inter-Light",
+              color: "rgba(209, 195, 146, 1)",
+            }}
+          >
+            {"\t\t\t " + item.desc3}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontFamily: "Inter-Medium",
+              color: "#D1C392",
+              marginTop: 12,
+              marginBottom: 4,
+            }}
+          >
+            {"\tМеста обитания"}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              fontFamily: "Inter-Light",
+              color: "rgba(209, 195, 146, 1)",
+            }}
+          >
+            {"\t\t\t " + item.desc4}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontFamily: "Inter-Medium",
+              color: "#D1C392",
+              marginTop: 12,
+              marginBottom: 4,
+            }}
+          >
+            {"\tРазмножение"}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              fontFamily: "Inter-Light",
+              color: "rgba(209, 195, 146, 1)",
+            }}
+          >
+            {"\t\t\t " + item.desc5}
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontFamily: "Inter-Medium",
+              color: "#D1C392",
+              marginTop: 12,
+              marginBottom: 4,
+            }}
+          >
+            {"\tПитание"}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              fontFamily: "Inter-Light",
+              color: "rgba(209, 195, 146, 1)",
+              marginBottom: 20,
+            }}
+          >
+            {"\t\t\t " + item.desc6}
+          </Text>
+        </ScrollView>
 
         <View
           style={{
@@ -106,7 +205,13 @@ const ItemScreen = ({ route, navigation }) => {
           }}
         >
           <PlayIcon />
-          <LikeIcon />
+
+          <Pressable
+            onPress={() => dispatch(favoriteSlice.actions.addCartItem(item))}
+          >
+            <LikeIcon fill={birdsFav.find((i) => item.id === i.id)} />
+          </Pressable>
+
           <BookIcon />
         </View>
       </View>
