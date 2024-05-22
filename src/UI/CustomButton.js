@@ -5,6 +5,7 @@ const CustomButton = ({
   color = "rgba(50, 65, 36, 1)",
   border = 2,
   borderColor = "rgba(159, 133, 70, 1)",
+  textColor = "rgba(209, 195, 146, 1)",
   radius = 10,
   onClick = () => {},
   label = "button",
@@ -32,7 +33,7 @@ const CustomButton = ({
         style={{
           fontSize: 20,
           fontFamily: "Inter-Medium",
-          color: "rgba(209, 195, 146, 1)",
+          color: textColor,
           textAlign: "center",
         }}
       >

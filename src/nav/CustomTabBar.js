@@ -7,10 +7,12 @@ const CustomTabBar = ({
   state: { index: activeIndex, routes },
   navigation,
 }) => {
+  const { width } = useWindowDimensions();
+
   return (
     <View
       style={{
-        display: "flex",
+        display: "",
         flexDirection: "row",
         justifyContent: "space-evenly",
         height: 70,
@@ -28,10 +30,11 @@ const CustomTabBar = ({
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            marginHorizontal: 20,
+            // marginHorizontal: 20,
+            width: width / 3,
           }}
         >
-          {route.name === "Quiz" && (
+          {route.name === "QuizStack" && (
             <>
               <QuizIcon
                 stroke={

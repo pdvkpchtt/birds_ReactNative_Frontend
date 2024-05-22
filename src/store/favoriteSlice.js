@@ -10,7 +10,6 @@ export const favoriteSlice = createSlice({
   reducers: {
     addCartItem: (state, action) => {
       const newProduct = action.payload;
-      console.log(newProduct);
       const cartSameItemCheck = state.birdsFav.find(
         (i) => i.name === newProduct.name
       );

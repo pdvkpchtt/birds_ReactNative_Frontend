@@ -2,6 +2,7 @@ import React from "react";
 import {
   Image,
   ImageBackground,
+  Pressable,
   StyleSheet,
   Text,
   useWindowDimensions,
@@ -10,10 +11,12 @@ import {
 import Layout from "../layout/Layout";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import CustomButton from "../UI/CustomButton";
+import CrossIcon from "../UI/icons/CrossIcon";
 
-const Quiz = ({ navigation }) => {
+const Result = ({ route, navigation }) => {
   const { width } = useWindowDimensions();
-
+  const { results } = route.params;
+  console.log(results);
   return (
     <View
       style={{
@@ -47,16 +50,21 @@ const Quiz = ({ navigation }) => {
             marginLeft: 5,
           }}
         >
-          Квиз
+          Результат квиза
         </Text>
 
-        <View
+        <Pressable
           style={{
             height: 44,
             width: 36,
             backgroundColor: "rgba(50, 65, 36, 1)",
+            paddingHorizontal: 6,
+            paddingVertical: 9,
           }}
-        />
+          onPress={() => navigation.navigate("Quiz")}
+        >
+          <CrossIcon />
+        </Pressable>
       </View>
 
       <View
@@ -81,13 +89,22 @@ const Quiz = ({ navigation }) => {
             height: "70%",
           }}
         />
-        <CustomButton
-          label="Начать квиз"
-          color="rgba(50, 65, 36, 1)"
-          otherStyle={{ position: "absolute", bottom: 28 }}
-          onClick={() => navigation.navigate("Test")}
-          border={0}
-        />
+        <Text
+          style={{
+            fontSize: 20,
+            fontFamily: "Inter-SemiBold",
+            color: "rgba(209, 195, 146, 1)",
+            textAlign: "center",
+            position: "absolute",
+            bottom: 48,
+          }}
+        >
+          {"Правильных ответов " +
+            results.reduce((total, x) => (x === true ? total + 1 : total), 0) +
+            "/" +
+            results.length}
+        </Text>
+
         <View
           style={{
             position: "absolute",
@@ -102,4 +119,4 @@ const Quiz = ({ navigation }) => {
   );
 };
 
-export default Quiz;
+export default Result;

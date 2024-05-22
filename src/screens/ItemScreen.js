@@ -26,7 +26,6 @@ const ItemScreen = ({ route, navigation }) => {
     (state) => [state.favorite.birdsFav],
     shallowEqual
   );
-  console.log(birdsFav);
 
   const dispatch = useDispatch();
 

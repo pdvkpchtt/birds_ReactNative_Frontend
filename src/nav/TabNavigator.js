@@ -5,6 +5,7 @@ import Quiz from "../screens/Quiz";
 import CustomTabBar from "./CustomTabBar";
 import DataNavigator from "./DataNavigator";
 import ProfileNavigator from "./ProfileNavigator";
+import QuizNavigator from "./QuizNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,8 +19,8 @@ const TabNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="Quiz"
-        component={Quiz}
+        name="QuizStack"
+        component={QuizNavigator}
         options={{ headerShown: false }}
       />
       <Tab.Screen
