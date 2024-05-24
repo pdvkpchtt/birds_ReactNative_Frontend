@@ -2,6 +2,7 @@ import { Pressable, Text, useWindowDimensions, View } from "react-native";
 import QuizIcon from "../UI/icons/QuizIcon";
 import DataIcon from "../UI/icons/DataIcon";
 import ProfileIcon from "../UI/icons/ProfileIcon";
+import { useNavigationState } from "@react-navigation/native";
 
 const CustomTabBar = ({
   state: { index: activeIndex, routes },

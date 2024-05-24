@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Quiz"
+      initialRouteName="DataStack"
       tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         tabBarHideOnKeyboard: true,

@@ -4,6 +4,7 @@ import Auth from "../screens/Auth";
 import AuthAuth from "../screens/AuthAuth";
 import AuthRegister from "../screens/AuthRegister";
 import Favorites from "../screens/Favorites";
+import Test from "../screens/Test";
 import TabNavigator from "./TabNavigator";
 
 const Stack = createNativeStackNavigator();
@@ -39,6 +40,13 @@ const MainNavigator = () => {
             headerShown: false,
           }}
           component={TabNavigator}
+        />
+        <Stack.Screen
+          name="Test"
+          options={{
+            headerShown: false,
+          }}
+          component={Test}
         />
       </Stack.Navigator>
     </NavigationContainer>

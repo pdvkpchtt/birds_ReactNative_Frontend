@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   Pressable,
@@ -15,11 +15,13 @@ import LikeIcon from "../UI/icons/LikeIcon";
 import BookIcon from "../UI/icons/BookIcon";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { favoriteSlice } from "../store/favoriteSlice";
+import { Audio } from "expo-av";
 
 const ItemScreen = ({ route, navigation }) => {
   const { id } = route.params;
 
   const { width } = useWindowDimensions();
+  const dispatch = useDispatch();
 
   const item = bird.find((i) => i.id === id);
   const [birdsFav] = useSelector(
@@ -27,7 +29,55 @@ const ItemScreen = ({ route, navigation }) => {
     shallowEqual
   );
 
-  const dispatch = useDispatch();
+  const [play, setplay] = useState(false);
+  const [handleSound, sethandleSound] = useState(false);
+
+  // useEffect(() => {
+  //   const handleSound = async () => {
+  //     const { sound } = await Audio.Sound.createAsync(
+  //       require("../../assets/test.mp3")
+  //     );
+  //     if (play === true) {
+  //       console.log("play");
+  //       await sound.playAsync();
+  //     } else {
+  //       console.log("stop");
+  //       return;
+  //     }
+  //   };
+  //   handleSound();
+  // }, [play]);
+  const [sound, setSound] = React.useState();
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  async function loadSound() {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(item.sound);
+    setSound(sound);
+  }
+  async function playSound() {
+    if (!sound) {
+      await loadSound();
+    }
+    console.log(await sound.getStatusAsync());
+    if (!isPlaying) {
+      console.log("Playing Sound");
+      await sound.playAsync();
+    } else {
+      await sound.stopAsync();
+    }
+    setIsPlaying((prev) => !prev);
+  }
+  React.useEffect(() => {
+    loadSound();
+  }, []);
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
 
   return (
     <View
@@ -203,7 +253,13 @@ const ItemScreen = ({ route, navigation }) => {
             gap: 14,
           }}
         >
-          <PlayIcon />
+          <PlayIcon
+            onClick={() => {
+              setplay(!play);
+              playSound();
+            }}
+            state={play}
+          />
 
           <Pressable
             onPress={() => dispatch(favoriteSlice.actions.addCartItem(item))}

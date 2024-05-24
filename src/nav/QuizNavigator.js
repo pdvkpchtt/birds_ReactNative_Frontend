@@ -20,13 +20,13 @@ const QuizNavigator = () => {
         }}
         component={Quiz}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Test"
         options={{
           headerShown: false,
         }}
         component={Test}
-      />
+      /> */}
       <Stack.Screen
         name="Result"
         options={{
