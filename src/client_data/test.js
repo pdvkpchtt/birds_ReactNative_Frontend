@@ -64,8 +64,8 @@ export const test = [
     img: require("../../assets/bird7.png"),
     question: "К какому семейству принадлежит птица на изображении?",
     answers: [
-      { id: 0, text: "Снегиревые", right: true },
-      { id: 1, text: "Вьюрковые", right: false },
+      { id: 0, text: "Снегиревые", right: false },
+      { id: 1, text: "Вьюрковые", right: true },
       { id: 2, text: "Воробьиные", right: false },
     ],
   },
