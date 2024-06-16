@@ -14,6 +14,7 @@ const ProfileNavigator = () => {
         name="Profile"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={Profile}
       />
@@ -21,6 +22,7 @@ const ProfileNavigator = () => {
         name="Favorites"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={Favorites}
       />
@@ -28,6 +30,7 @@ const ProfileNavigator = () => {
         name="Item1"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={ItemScreen}
       />
@@ -35,6 +38,7 @@ const ProfileNavigator = () => {
         name="FavSearch"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={FavSearch}
       />

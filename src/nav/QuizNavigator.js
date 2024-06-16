@@ -17,6 +17,7 @@ const QuizNavigator = () => {
         name="Quiz"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={Quiz}
       />
@@ -31,6 +32,7 @@ const QuizNavigator = () => {
         name="Result"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={Result}
       />

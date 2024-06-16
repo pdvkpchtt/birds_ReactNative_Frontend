@@ -12,6 +12,7 @@ const DataNavigator = () => {
         name="Data"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={Data}
       />
@@ -19,6 +20,7 @@ const DataNavigator = () => {
         name="Search"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={Search}
       />
@@ -26,6 +28,7 @@ const DataNavigator = () => {
         name="Item"
         options={{
           headerShown: false,
+          animation: "none",
         }}
         component={ItemScreen}
       />

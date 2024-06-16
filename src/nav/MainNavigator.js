@@ -17,6 +17,7 @@ const MainNavigator = () => {
           name="Auth"
           options={{
             headerShown: false,
+            animation: "none",
           }}
           component={Auth}
         />
@@ -24,6 +25,7 @@ const MainNavigator = () => {
           name="AuthRegister"
           options={{
             headerShown: false,
+            animation: "none",
           }}
           component={AuthRegister}
         />
@@ -31,6 +33,7 @@ const MainNavigator = () => {
           name="AuthAuth"
           options={{
             headerShown: false,
+            animation: "none",
           }}
           component={AuthAuth}
         />
@@ -38,6 +41,7 @@ const MainNavigator = () => {
           name="Tabs"
           options={{
             headerShown: false,
+            animation: "none",
           }}
           component={TabNavigator}
         />
@@ -45,6 +49,7 @@ const MainNavigator = () => {
           name="Test"
           options={{
             headerShown: false,
+            animation: "none",
           }}
           component={Test}
         />

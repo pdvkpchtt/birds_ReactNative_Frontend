@@ -21,17 +21,17 @@ const TabNavigator = () => {
       <Tab.Screen
         name="QuizStack"
         component={QuizNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, animation: "none" }}
       />
       <Tab.Screen
         name="DataStack"
         component={DataNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, animation: "none" }}
       />
       <Tab.Screen
         name="ProfileStack"
         component={ProfileNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, animation: "none" }}
       />
     </Tab.Navigator>
   );
